@@ -1,0 +1,80 @@
+<div *ngIf="document && loaded && styleNumber === 1">
+    <article class="mycard" [routerLink]="[linkResolver(document)]" (mouseenter)="isHover=true" (mouseleave)="isHover=false"
+        [ngClass]="{'hover':isHover,'height':cardHeight+'px'}">
+        <!--pre-loading icon-->
+        <div class="center" *ngIf="loadingImage" [ngStyle]="{'height':cardHeight+'px'}">
+            <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+        </div>
+        <!---->
+        <img [src]="document.data.gallery[0].image.url" [ngStyle]="{'display':loadingImage ?'none':'block','height':cardHeight+'px'}" (load)="loadingImage=false">
+        <div [hidden]="loadingImage" [ngClass]="{'card-overlay':!loadingImage}" [ngStyle]="{'height':cardHeight+'px'}">
+            <div *ngIf="showDate && document.data.date" class="card-date">
+                <div class="day">
+                    {{document.data.date | amDateFormat:'D'}}
+                </div>
+                <div class="month">
+                    {{document.data.date | amDateFormat:'MMM'}}
+                </div>
+            </div>
+            <div *ngIf="document.data.brand" 
+            class="card-brand" [ngClass]="{'hover':isHover}" [ngStyle]="{'font-size':text.brand+'em'}">
+                {{capitalizeFirstLetter(document.data.brand.data.name)}}
+            </div>
+            <div *ngIf="document.data.season" 
+            class="card-season" [ngStyle]="{'font-size':text.season+'em'}">
+                {{capitalizeFirstLetter(document.data.season.data.name)}}
+            </div>
+        </div>
+    </article>
+</div>
+<!--collection review in home-->
+<div *ngIf="document && styleNumber === 2">
+    <article class="mycard">
+        <!--pre-loading icon-->
+        <div class="center" *ngIf="loadingImage">
+            <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+        </div>
+        <!---->
+        <img [hidden]="loadingImage" [src]="document.data.gallery[0].image.url" [ngStyle]="{'height':cardHeight+'px'}" (load)="loadingImage=false" [routerLink]="[linkResolver(document),'review']"
+            [ngClass]="{'hover':isHover}">
+        <div *ngIf="!loadingImage" [routerLink]="[linkResolver(document),'review']" [ngClass]="{'card-overlay':!loadingImage,'hover':isHover}"
+            [ngStyle]="{'height':cardHeight+'px'}" (mouseenter)="isHover=true" (mouseleave)="isHover=false">
+            <div *ngIf="showDate && document.data.date" class="card-date">
+                <div class="day">
+                    {{document.data.date | amDateFormat:'D'}}
+                </div>
+                <div class="month">
+                    {{document.data.date | amDateFormat:'MMM'}}
+                </div>
+            </div>
+            <div *ngIf="document.data.brand" class="card-brand" [ngClass]="{'hover':isHover}" [ngStyle]="{'font-size':text.brand+'em'}">
+                {{capitalizeFirstLetter(document.data.brand.data.name)}}
+            </div>
+            <div *ngIf="document.data.season" class="card-season" [ngStyle]="{'font-size':text.season+'em'}">
+                {{capitalizeFirstLetter(document.data.season.data.name)}}
+            </div>
+        </div>
+        <div [routerLink]="[linkResolver(document),'review']" (mouseenter)="isHover=true" (mouseleave)="isHover=false">
+            <h1 class="card-title" [ngClass]="{'hover':isHover}">{{document.data.title}}</h1>
+            <div class="card-category">Collection Review</div>
+            <div class="card-desc">{{toShortDescription(firstParagraph)}}
+                <span [ngClass]="{'more':true,'hover':isHover}" *ngIf="firstParagraph.length > limit">  — read review</span>
+            </div>
+
+        </div>
+        <!--<div class="squarebox" [routerLink]="[linkResolver(document)]"><i class="fa fa-camera" aria-hidden="true"></i> View all {{groupImages.length}} collection images</div>-->
+
+    </article>
+    <!--<article id="related-card" class="mycard" (mouseenter)="isHover=true" (mouseleave)="isHover=false">
+        <a [routerLink]="[linkResolver(document)]">
+            <img [src]="image?image.url:''" [ngClass]="{'card-img':true,'hover':isHover}" [ngStyle]="{'height':imageHeight+'px'}">
+            <h1 [ngClass]="{'card-title':true,'hover':isHover}">{{title?title.getTitle().text:''}}</h1>
+            <div class="card-desc">{{desc}} <span [ngClass]="{'more':true,'hover':isHover}" *ngIf="isMore">  — read more</span></div>
+            <div class="image-counter">{{capitalizeFirstLetter(category.getText('category.name'))}}</div>
+        </a>
+    </article>-->
+</div>
+
+<div *ngIf="loaded && !document">
+    <h2>Not found!</h2>
+</div>

@@ -1,0 +1,47 @@
+<main>
+    <div scrollSpy class="container-fluid">
+        <div class="row">
+            <div id="top-section" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <img id="top-logo" src="assets/svg/birls.svg" alt="" [routerLink]="['']">
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+    <!--<div data-spy="affix" data-offset-top="150" class="menu-replacer"></div>
+    <nav-bar data-spy="affix" data-offset-top="150" data-offset-bottom="200"></nav-bar>-->
+    <div data-offset-top="150" class="menu-replacer"></div>
+    <nav-bar data-offset-top="150" data-offset-bottom="200"></nav-bar>
+    <router-outlet></router-outlet>
+</main>
+<footer class="container-fluid">
+    <div id="links-section" class="row">
+        <!--<div class="col-lg-4 footer-column center">
+            <a href="">{{ "POPULAR TAGS" | uppercase}}</a>
+          
+            <div class="tag-container">
+                <div class="tag-box" *ngFor="let tag of tags">
+                    {{tag}}
+                </div>
+            </div>
+        </div>-->
+        <div class="col-lg-12 footer-row center">
+            <ul>
+                <li><a href="">{{ "About Us" | uppercase}}</a></li>
+                <li><a href="">{{ "Contacts" | uppercase}}</a></li>
+                <li><a href="">{{ "Shop" | uppercase}}</a></li>
+            </ul>
+        </div>
+ 
+    </div>
+    <div id="follow-section" class="row">
+        <div class="col-lg-12 footer-column">
+            <p class="share">FOLLOW US</p>
+            <div class="social-bar">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</footer>

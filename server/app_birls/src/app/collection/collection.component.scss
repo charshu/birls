@@ -1,0 +1,97 @@
+@import "~styles/color";
+//  custom
+.arrow_box {
+    position: relative;
+    background: #ffffff;
+    // border: 1px solid #CCC;
+}
+
+.arrow_box:after,
+.arrow_box:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #ffffff;
+    border-width: 15px;
+    margin-left: -15px;
+}
+
+.arrow_box:before {
+    border-color: rgba(204, 204, 204, 0);
+    border-top-color: #CCC;
+    border-width: 16px;
+    margin-left: -16px;
+}
+
+
+.nav2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid #CCC;
+    div {
+        display: block;
+        padding: 15px;
+        cursor: pointer;
+        outline:0px;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .item{
+
+        &:hover{
+            color: $birls_darkpink;
+        }
+    }
+}
+
+.main-body {
+    min-height: 600px;
+}
+
+.image-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    ul.title-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 0px!important;
+        -webkit-padding-start: 20px!important;
+        li {
+            font-family: 'Open Sans', sans-serif;
+            list-style: none;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: $birls_darkpink;
+            padding: 5px;
+        }
+        span.slash-divider {
+            width: 1px;
+            height: 35px;
+            border-right: 1px solid #CCC;
+            transform: rotate(35deg);
+            margin-top: 3px;
+            margin-bottom: 3px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+<div  class="image-container" *ngIf="loaded">
+    <masonry [useImagesLoaded]="false" [options]="{columnWidth:'.brick',gutter:40, transitionDuration: '0.8s',percentPosition: true }">
+        <masonry-brick class="brick" *ngFor="let galleryItem of document.data.gallery; let i= index">
+            <img *xl [src]="galleryItem.image.tablet.url"  alt="">
+            <img *lg [src]="galleryItem.image.mobile.url"  alt="">
+            <img *md [src]="galleryItem.image.mobile.url" alt="">
+            <img *sm [src]="galleryItem.image.mobile.url"  alt="">
+            <div class="desc" (click)="openImageModal(i)">
+                <i class="fi flaticon-interface"></i>&nbsp;<span class="view_img">VIEW IMAGE</span>
+            </div>
+        </masonry-brick>
+    </masonry>
+    
+</div>
+<div *ngIf="openModalWindow">
+    <ImageModal [modalImages]="images" [imagePointer]="imagePointer" (cancelEvent)="cancelImageModel()"></ImageModal>
+</div>

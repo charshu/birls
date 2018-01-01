@@ -1,0 +1,173 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0px !important;
+}
+
+h1 {
+    font-size: 4.00em;
+    font-weight: 900;
+}
+
+
+
+h6 {
+    font-weight: 700;
+}
+
+.shadow1 {
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.shadow2 {
+    color: white;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.center {
+    display: block;
+    text-align: center;
+    margin: 10px;
+    z-index: 99;
+}
+#cover-wrapper{
+    height: 350px;
+}
+#cover-image{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: center;
+    z-index: 97;
+}
+.cover {
+    position: relative;
+    align-items: center;
+    width: 100%;
+    height: 350px;
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.1) 30%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1) 70%, rgba(0, 0, 0, 0.9) 100%);    
+    z-index: 98;
+    padding-top: 150px;
+    &.noise {
+        position: relative;
+    }
+    &.noise:after {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 450px;
+        content: "";
+        position: absolute;
+        background-image: url('~assets/img/noise.png');
+    }
+    .select-container {
+        z-index: 100;
+        height: auto;
+        span#search-label {
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .form-group {
+            // margin-right: 20px;
+            select {
+                width: 248px;
+                // padding: 5px;
+                font-size: 14px;
+                line-height: 1;
+                border: 0;
+                border-radius: 0px;
+                height: 30px;
+                background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-08-128.png) no-repeat right white;
+                background-size: 25px;
+                -webkit-appearance: none;
+                background-position-x: 215px;
+                &:disabled {
+                    background-color: #CCC;
+                }
+            }
+        }
+        .btn {
+            border-radius: 0px;
+            height: 34px;
+            width: 100px;
+        }
+    }
+    .social-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        position: relative;
+        width: 300px;
+        // top: -100px;
+        z-index: 99;
+        .circle {
+            margin: 3px;
+            font-size: 16px;
+            color: white;
+            border: 2px solid rgba(white, 0.8);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            line-height: 30px;
+            overflow: hidden;
+            cursor: pointer;
+            -webkit-transition: all .3s ease-in-out;
+            transition: all .3 ease-in-out;
+            &.facebook:hover {
+                border: 2px solid #3b5998;
+                background-color: #3b5998;
+            }
+            &.twitter:hover {
+                border: 2px solid #00aced;
+                background-color: #00aced;
+            }
+            &.youtube:hover {
+                border: 2px solid #c4302b;
+                background-color: #c4302b;
+            }
+        }
+    }
+}
+
+.group-title {
+    background-color: white;
+    border-bottom: 1px solid #CCC;
+    text-align: center;
+    padding: 20px 0px;
+}
+
+#collection-section {
+    margin: 0 0;
+    padding: 20px 0;
+    background-color: white;
+    position: relative;
+    min-height: 200px;
+    z-index: 100;
+    // border-top: 1px solid deeppink;
+}
+
+.torn {
+    width: 100%;
+    height: 40px;
+    background-image: url('~assets/img/torn.png');
+    background-color: #F6F6F6;
+    background-repeat: repeat-x;
+}
+
+.more {
+    position: relative;
+    text-align: center;
+    font-size: 3.00em;
+    font-weight: 900;
+    cursor: pointer;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3 ease-in-out;
+    &:hover {
+        color: #00aced;
+    }
+}

@@ -1,0 +1,99 @@
+@import "~styles/color";
+$image_size:16.46vw;
+$image_margin: 0.1vw;
+.image-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    // border-bottom: 1px solid #CCC;
+    font-family: 'Open Sans', sans-serif;
+    .title-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        // background-image: linear-gradient(rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.03) 100%);
+        width: 100%;
+        span {
+            font-size: 1em;
+            font-weight: bold;
+            margin: 5px;
+            color: $birls_darkpink;
+        }
+        span.slash-divider {
+            width: 1px;
+            height: 40px;
+            border-right: 1px solid #CCC;
+            transform: rotate(35deg);
+            margin-top: 3px;
+            margin-bottom: 3px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+    }
+}
+
+.image-container {
+    width: 100%;
+    padding-top: 20px;
+}
+
+// change this value to equal gutter of masonry grid
+$brick-gutter: 40px;
+.brick {
+    position: relative;
+    margin-bottom: 50px;
+    @media only screen and (min-width: 992px) {
+        width: calc(100% / 6 - #{$brick-gutter});
+    }
+    @media only screen and (max-width:992px) {
+        width: calc(100% / 5 - #{$brick-gutter});
+    }
+    @media only screen and (max-width:702px) {
+        width: calc(100% / 4 - #{$brick-gutter});
+    }
+    @media only screen and (max-width:502px) {
+        width: calc(100%);
+    }
+    &:hover {
+        // transform: scale(1.05);
+        .desc {
+            visibility: visible;
+        }
+        img {
+            filter: brightness(80%);
+        }
+    }
+    img {
+        position: relative;
+        z-index: 99;
+        object-fit: contain;
+        width: 100%;
+        background: black;
+        transition: all .1s ease-in-out;
+    }
+    .desc {
+        font-family: 'Open Sans', sans-serif;
+        position: absolute;
+        top:0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        font-size: 1em;
+        visibility: hidden;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        transition: all .1s ease-in-out;
+        border: 1px solid #CCC;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
