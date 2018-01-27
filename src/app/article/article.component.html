@@ -1,0 +1,191 @@
+<div class="article-container" *ngIf="loaded && article">
+    <div class="container-fluid">
+        <div class="row" id="content-section">
+            <div class="col-sm-12 col-md-8 col-lg-7 col-lg-offset-1">
+                <div class="article-title">
+                    <h1 *ngIf="article.data.title">{{article.data.title}}</h1>
+                    <h1 *ngIf="article.data.review_title">{{article.data.review_title}}</h1>
+                </div>
+                <table class="article-info">
+                    <tr>
+                        <td *ngIf="article.data.link" class="category" rowspan="2">
+                            {{article.data.link.data.name}}
+                        </td>
+                        <td *ngIf="article.data.author" rowspan="2">
+                            <img [src]="article.data.author.data.profile_image.url" alt="">
+                        </td>
+                        <td *ngIf="article.data.author" class="name"><span>Written by </span>{{article.data.author.data.name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="date">
+                            Last updated {{article.data.date | amTimeAgo}}, {{article.data.date | amDateFormat:'MMMM DD, YYYY'}} 
+                        </td>
+                    </tr>
+                </table>
+                <!-- <img *ngIf="image" [src]="image?image.url:''" class="article-img"> -->
+                <div class="slice" *ngFor="let slice of article.data.body">
+                    <div *ngIf="slice.slice_type==='one_column'" [innerHtml]="PrismicDOM.RichText.asHtml(slice.primary.paragraph)" class="one-column"></div>
+                    <div *ngIf="slice.slice_type==='two_column'" class="two-column">
+                        <table>
+                            <tr>
+                                <td [innerHtml]="PrismicDOM.RichText.asHtml(slice.primary.left_paragraph)"></td>
+                                <td [innerHtml]="PrismicDOM.RichText.asHtml(slice.primary.right_paragraph)"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div *ngIf="slice.slice_type === 'left_image_paragraph'" class="left-image-paragraph">
+                        <p *ngIf="slice.primary.image">
+                            <img *xl [src]="slice.primary.image.tv.url" alt="">
+                            <img *lg [src]="slice.primary.image.desktop.url" alt="">
+                            <img *md [src]="slice.primary.image.tablet.url" alt="">
+                            <img *sm [src]="slice.primary.image.mobile.url" alt="">
+                            <span [innerHtml]="PrismicDOM.RichText.asHtml(slice.primary.paragraph)"></span>
+                        </p>
+                        <span class="clear"></span>
+                    </div>
+                    <div *ngIf="slice.slice_type === 'right_image_paragraph'" class="right-image-paragraph">
+                        <p> 
+                            <img *xl [src]="slice.primary.image.tv.url" alt="">
+                            <img *lg [src]="slice.primary.image.desktop.url" alt="">
+                            <img *md [src]="slice.primary.image.tablet.url" alt="">
+                            <img *sm [src]="slice.primary.image.mobile.url" alt="">
+                            <span [innerHtml]="PrismicDOM.RichText.asHtml(slice.primary.paragraph)"></span>
+                        </p>
+                        <span class="clear"></span> 
+                        
+                    </div>
+                    <div *ngIf="slice.slice_type === 'quote'" class="quote">
+                        <blockquote class="blockquote">
+                            <p>{{slice.primary.quote}}</p>
+                        </blockquote>
+                    </div>
+                    <div *ngIf="slice.slice_type === 'photo_block'" class="photo_block">
+                        <table class="card-centered">
+                            <tr>
+                                <td *ngIf="slice.primary.image">
+                                    <img *xl [src]="slice.primary.image.tv.url" alt="">
+                                    <img *lg [src]="slice.primary.image.desktop.url" alt="">
+                                    <img *md [src]="slice.primary.image.tablet.url" alt="">
+                                    <img *sm [src]="slice.primary.image.mobile.url" alt="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div *ngIf="slice.primary.name" class="name">
+                                        {{slice.primary.name}}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div *ngIf="slice.primary.caption" class="description">
+                                        {{slice.primary.caption}}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div *ngIf="slice.primary.credit" class="credit">
+                                        {{slice.primary.credit}}
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div *ngIf="slice.slice_type==='slide_image'" class="slide-image">
+                        <div id="slider" *ngIf="slice.items">
+                            <div id="carousel" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li [ngClass]="{'active':i===0}" *ngFor="let item of slice.items;let i = index" data-target="#carousel" [attr.data-slide-to]="i"></li>
+                                </ol>
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item" [ngClass]="{'active':i==0}" *ngFor="let item of slice.items;let i = index;">
+                                        <div *ngIf="item.image">
+                                                <img *xl [src]="item.image.tv.url" alt="{{item.caption[0].text}}" (click)="redirect(item.image.url)">
+                                                <img *lg [src]="item.image.desktop.url" alt="{{item.caption[0].text}}" (click)="redirect(item.image.url)">
+                                                <img *md [src]="item.image.tablet.url" alt="{{item.caption[0].text}}" (click)="redirect(item.image.url)">
+                                                <img *sm [src]="item.image.mobile.url" alt="{{item.caption[0].text}}" (click)="redirect(item.image.url)">
+                                        </div>
+                                        
+                                        <div class="carousel-caption" [innerHtml]="PrismicDOM.RichText.asHtml(item.caption)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- <contentSlider [slides]="images"></contentSlider> -->
+                <div id="related-article" *ngIf="docsSimilar" class="row">
+                    <div class="col-lg-12">
+                        <div class="title">
+                            Related Articles
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-lg-4 flex-row-center" *ngFor="let response of docsSimilar;let i = index">
+                        <article-card [document]="docSimilar" [styleNumber]="2" [imageHeight]="200" [limit]="100"></article-card>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4" id="right-section">
+                <div class="row">
+                    <div class="col-lg-12 share-container">
+                        <div class="share-count">
+                            <h3>{{totalShare | nFormatter}}</h3>
+                            <b>SHARES</b>
+                        </div>
+                        <share-buttons [url]="page_url" [facebook]="fbInner" [twitter]="twitterInner" [pinterest]="pintInner" [linkedIn]="false"
+                            [google]="googleInner" [tumblr]="false" [reddit]="false" [stumbleUpOn]="false" [showCount]="true"
+                            (count)="sumCounts($event)">
+                        </share-buttons>
+                    </div>
+
+                    <div *ngIf="article.tags.length > 0" id="tag-section" class="col-lg-12">
+                        <div class="title">
+                            <i class="fa fa-tags" aria-hidden="true"></i> TAGS
+                        </div>
+                        <div class="tag-container flex-row-center">
+                            <div class="tag-box" *ngFor="let tag of article.tags; let i = index" [routerLink]="['/tags/' + tag]">
+                                {{tag}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-12 comment flex-col-center">
+                <div class="title"> <i class="fi flaticon-blank-squared-bubble"></i><br>Comment on Article </div>
+                <disqus [shortname]="disqusShortname" [identifier]="page_url"></disqus>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="loaded && !article">
+    <h2>Not found!</h2>
+</div>
+<!--loading-->
+<div class="loading" *ngIf="!loaded">
+    <!--preloader-->
+    <div id="pre-bootstrap-container">
+        <div id="pre-bootstrap">
+            <div class="logo"></div>
+            <div class="loader"></div>
+        </div>
+    </div>
+</div>

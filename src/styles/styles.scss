@@ -1,0 +1,163 @@
+@import "~styles/color";
+@import "~styles/media-query";
+@import "~styles/font";
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "~styles/animations";
+html {
+
+    margin: 0px;
+    padding: 0px;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0px;
+    background-color: #F6F6F6!important;
+    min-height: 100%;
+}
+
+.card-centered {
+    float: none!important;
+    margin: 0px auto;
+}
+.carousel-control {
+    width: 8%!important;
+}
+
+.justify-content-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.sb-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0 10px 0px 10px;
+    width: 300px;
+    z-index: 99;
+    .sb-title {
+        // color: hotpink;
+        font-size: 0.8em;
+        font-weight: bold;
+    }
+    .sb-count {
+        font-size: 0.8em;
+    }
+    .sb-buttons {
+        margin: 5px!important;
+        button {
+            width: auto;
+            margin: 0px;
+            padding: 0px;
+            min-width: 0px;
+        }
+    }
+    .circle {
+        margin: 3px;
+        font-size: 18px;
+        color: white;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+        line-height: 30px;
+        overflow: hidden;
+        cursor: pointer;
+        -webkit-transition: all .3s ease-in-out;
+        transition: all .3 ease-in-out;
+        &.facebook {
+            border: 2px solid #3b5998;
+            background-color: #3b5998;
+        }
+        &.twitter {
+            border: 2px solid #00aced;
+            background-color: #00aced;
+        }
+        &.youtube {
+            border: 2px solid #c4302b;
+            background-color: #c4302b;
+        }
+        &.googlePlus {
+            border: 2px solid #e93f2e;
+            background-color: #e93f2e;
+        }
+        &.email {
+            border: 2px solid grey;
+            background-color: grey;
+        }
+        &.pinterest {
+            border: 2px solid #c92228;
+            background-color: #c92228;
+        }
+        &.linkin {
+            border: 2px solid #0e76a8;
+            background-color: #0e76a8;
+        }
+        &.tumblr {
+            border: 2px solid #36465d;
+            background-color: #36465d;
+        }
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.loading {
+    height: 1000px;
+    #pre-bootstrap-container {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        z-index: 1100;
+        //background-color: deeppink;
+        #pre-bootstrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1100;
+            .logo {
+                position: relative;
+                width: 300px;
+                height: 100px;
+                background-image: url('~assets/svg/birls.black.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                // opacity: 0;
+                z-index: 1101;
+            }
+            .loader {
+                position: relative;
+                // border: 0px solid $birls_darkpink;
+                border-top: 6px solid $birls_pink;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                animation: spin 2s linear infinite;
+                // opacity: 0;
+                z-index: 1101;
+            }
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+    }
+}

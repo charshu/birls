@@ -1,0 +1,135 @@
+@import "~styles/color";
+main {
+    min-height: 100%;
+}
+
+
+
+footer {
+    width: 100%;
+    overflow: hidden;
+    background-color: #292929;
+    margin-top: 50px;
+    padding-top: 15px;
+    border-top: 1px solid #CCC;
+}
+
+footer.container-fluid {
+    padding-right: 0px!important;
+    padding-left: 0px!important;
+    .row {
+        padding-left: 10%;
+        padding-right: 10%;
+        margin-left: 0px!important;
+        margin-right: 0px!important;
+    }
+}
+
+footer #links-section.row {
+    ul {
+        -webkit-padding-start: 0px;
+        li {
+            display: inline-block;
+            margin-right: 20px;
+
+        }
+    }
+    a {
+        display: block;
+        text-decoration: none;
+        margin-top: 10px;
+        color: white;
+        font-weight: 700;
+        &:hover {
+            color: $birls_darkpink;
+        }
+    }
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    &.center {
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.footer-row {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    &.center {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.tag-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.tag-box {
+    margin: 3px 3px 3px 0px;
+    font-size: 0.8em;
+    color: $birls_darkpink;
+    border: 1px solid rgba($birls_darkpink, 0.8);
+    border-radius: 3px;
+    padding: 5px;
+    width: auto;
+    height: 32px;
+    text-align: center;
+    //  line-height: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3 ease-in-out;
+    &:hover {
+        color: white;
+        border: 1px solid $birls_darkpink;
+        background-color: $birls_darkpink;
+    }
+}
+
+footer #follow-section.row {
+    height: 80px;
+}
+
+p.share {
+    display: block;
+    text-align: center;
+    margin-bottom: 3px!important;
+}
+
+.social-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    align-items: baseline;
+    i {
+        font-size: 1.5em;
+        color: #555;
+        padding: 5px 20px;
+        cursor:pointer;
+        &:hover {
+            color: #999;
+        }
+    }
+}
+
+section {
+    position: relative;
+    background-color: white;
+    z-index: 999;
+}
+
+
+
+
