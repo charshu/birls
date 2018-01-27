@@ -12,6 +12,7 @@
   "author": "Patrick Stapleton <patrick@angularclass.com>",
   "homepage": "https://github.com/AngularClass/angular-starter",
   "license": "MIT",
+  "main": "server/app.js",
   "scripts": {
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && cross-env BUILD_AOT=1 npm run webpack -- --config config/webpack.prod.js  --progress --profile --bail",
     "build:aot": "npm run build:aot:prod",
@@ -43,7 +44,7 @@
     "github-deploy": "npm run github-deploy:dev",
     "lint": "npm run tslint \"src/**/*.ts\"",
     "node": "node",
-    "postinstall": "npm run webdriver:update",
+    "postinstall": "npm run build:prod",
     "postversion": "git push && git push --tags",
     "preclean:install": "npm run clean",
     "preversion": "npm test",
@@ -75,8 +76,10 @@
   },
   "dependencies": {
     "@angular/animations": "~4.3.1",
+    "@angular/cli": "^1.6.6",
     "@angular/common": "~4.3.1",
     "@angular/compiler": "~4.3.1",
+    "@angular/compiler-cli": "~4.3.1",
     "@angular/core": "~4.3.1",
     "@angular/forms": "~4.3.1",
     "@angular/http": "~4.3.1",
@@ -95,7 +98,6 @@
     "zone.js": "0.8.14"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "~4.3.1",
     "@angular2-material/core": "^2.0.0-alpha.8-2",
     "@angular2-material/tabs": "^2.0.0-alpha.8-2",
     "@angularclass/hmr": "^1.2.2",
