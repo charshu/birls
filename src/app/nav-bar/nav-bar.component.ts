@@ -55,10 +55,10 @@ export class NavBarComponent {
       this.document.body.scrollTop ||
       0;
     
-    if (windowScroll > this.scrollPoint) {
+    if (windowScroll > this.scrollPoint + 50) {
       //add class to the native element
       this.renderer.setElementClass(this.menu.nativeElement, "affix", true);
-      this.renderer.setElementClass(this.menu.nativeElement, "fadeInOpacity", true);
+      this.renderer.setElementClass(this.menu.nativeElement, "fadeInDown", true);
       this.renderer.setElementClass(
         this.menuReplacer.nativeElement,
         "affix",
@@ -89,7 +89,8 @@ export class NavBarComponent {
         "affix",
         false
       );
-      this.renderer.setElementClass(this.menu.nativeElement, "fadeInOpacity", false);
+      this.renderer.setElementClass(this.menu.nativeElement, "fadeInDown", false);
+      //this.renderer.setElementClass(this.menu.nativeElement, "fadeInOpacity", false);
       // this.renderer.setElementClass(
       //   this.menuLogo.nativeElement,
       //   "affix",

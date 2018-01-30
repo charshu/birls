@@ -7,7 +7,17 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item" [ngClass]="{'active':i==0}" *ngFor="let slideImage of slider_docs[0].data.images;let i = index;">
-      <img *ngIf="slideImage.image" [src]="slideImage.image.url" alt="{{slideImage.title}}" (click)="redirect(slideImage.url)">
+      <!-- <img *ngIf="slideImage.image" [src]="slideImage.image.url" alt="{{slideImage.title}}" (click)="redirect(slideImage.url)"> -->
+      <div *ngIf="slideImage.image" class="card-main-img" (click)="redirect(slideImage.url)">
+        <img *xl  
+        [defaultImage]="defaultImage" [lazyLoad]="slideImage.image.tv.url" [errorImage]="errorImage" [offset]="offset">
+        <img *lg 
+        [defaultImage]="defaultImage" [lazyLoad]="slideImage.image.desktop.url" [errorImage]="errorImage" [offset]="offset">
+        <img *md 
+        [defaultImage]="defaultImage" [lazyLoad]="slideImage.image.tablet.url" [errorImage]="errorImage" [offset]="offset">
+        <img *sm 
+        [defaultImage]="defaultImage" [lazyLoad]="slideImage.image.mobile.url" [errorImage]="errorImage" [offset]="offset">
+    </div>
       <div class="carousel-caption">
         <h3>{{slideImage.title}}</h3>
         <p>{{slideImage.description}}</p>

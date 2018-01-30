@@ -24,6 +24,12 @@ export class HomeComponent implements OnInit {
   public talent_docs: any = [];
   public collection_docs: any = [];
   public instagramImages: InstagramImage[];
+
+  public defaultImage = 'assets/img/animat-pencil-color.gif';
+  public image = 'https://images.unsplash.com/photo-1443890923422-7819ed4101c0?fm=jpg';
+  public errorImage = 'assets/svg/birls.svg';
+  public offset = 100;
+  
   current_slide: number = 0;
   igImageLimit: number = undefined;
   video = {
@@ -75,7 +81,7 @@ export class HomeComponent implements OnInit {
       this.ctx.Prismic.Predicates.at("document.type", "slider")
     ]);
     this.slider_docs = response.results;
-    console.log(this.slider_docs[0]);
+    console.log(this.slider_docs);
 
     // fashion
     response = await this.ctx.api.query(

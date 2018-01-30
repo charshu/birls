@@ -397,3 +397,32 @@ div#subscribe {
     margin: 15px;
   }
 }
+
+.card-main-img {
+  //loading image 
+  img {
+      object-fit: contain;
+      width: 100px;
+      margin: auto;
+      display: block;
+  }
+  //success
+  img.ng-lazyloaded {
+      object-fit: cover;
+      object-position: center;
+      transition: all .1s ease-in-out;
+      width: 100%; // default width
+      cursor: pointer;
+      &.hover {
+          transform: scale(1.05);
+      }
+  }
+  //fail
+  img.ng-failed-lazyloaded {
+      object-fit: contain;
+      width: 100px;
+      margin: auto;
+      display: block;
+  }
+  
+}
